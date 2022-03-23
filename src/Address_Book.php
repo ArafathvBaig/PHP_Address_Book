@@ -1,4 +1,5 @@
 <?php
+include 'Contact.php';
 
 /**
  * Author -> Arafath Baig
@@ -7,14 +8,8 @@
  */
 class Address_Book
 {
-    public $firstName;
-    public $lastName;
-    public $address;
-    public $city;
-    public $State;
-    public $zip;
-    public $phoneNumber;
-    public $email;
+    public $contactArray = array();
+    public $person;
 
     function welcomeMessage()
     {
@@ -25,35 +20,40 @@ class Address_Book
      * Function to get details from User
      * Non-Parameterized function
      */
-    function getDetails()
+    function addNewContact()
     {
-        $this->firstName = readline('Enter Your First Name: ');
-        $this->lastName = readline('Enter Your Last Name: ');
-        $this->address = readline('Enter Your Address: ');
-        $this->city = readline('Enter Your City: ');
-        $this->State = readline('Enter Your State: ');
-        $this->zip = readline('Enter Your Zip-Code: ');
-        $this->phoneNumber = readline('Enter Your Phone Number: ');
-        $this->email = readline('Enter Your Email-Id: ');
+        $firstName = readline('Enter Your First Name: ');
+        $lastName = readline('Enter Your Last Name: ');
+        $address = readline('Enter Your Address: ');
+        $city = readline('Enter Your City: ');
+        $state = readline('Enter Your State: ');
+        $zipCode = readline('Enter Your Zip-Code: ');
+        $phoneNumber = readline('Enter Your Phone Number: ');
+        $emailId = readline('Enter Your Email-Id: ');
+
+        $this->person = new Contact($firstName, $lastName, $address, $city, $state, $zipCode, $phoneNumber, $emailId);
+        array_push($this->contactArray, $this->person);
     }
 
     /**
      * Function Print the details of the User
      * Non-Parameterized function
      */
-    function showDetails()
+    function showContactDetails()
     {
-        echo "\nFirst Name:: " . $this->firstName;
-        echo "\nLast Name:: " . $this->lastName;
-        echo "\nAddress:: " . $this->address;
-        echo "\nCity:: " . $this->city;
-        echo "\nState:: " . $this->State;
-        echo "\nZip:: " . $this->zip;
-        echo "\nPhone Number:: " . $this->phoneNumber;
-        echo "\nEmail:: " . $this->email;
+        for ($i = 0; $i < count($this->contactArray); $i++) {
+            echo"\nFirst Name:: " . $this->person->getFirstName()
+                . "\nLast Name:: " . $this->person->getLastName()
+                . "\nAddress:: " . $this->person->getAddress()
+                . "\nCity:: " . $this->person->getCity()
+                . "\nState:: " . $this->person->getState()
+                . "\nZipCode:: " . $this->person->getZipCode()
+                . "\nPhone Number : " . $this->person->getPhoneNumber()
+                . "\nEmail Id:: " . $this->person->getEmailId();
+        }
     }
 }
 $addressBook = new Address_Book();
 $addressBook->welcomeMessage();
-$addressBook->getDetails();
-$addressBook->showDetails();
+$addressBook->addNewContact();
+$addressBook->showContactDetails();
