@@ -33,9 +33,19 @@ class Contact
         return $this->firstName;
     }
 
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
     public function getLastName()
     {
         return $this->lastName;
+    }
+
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
     }
 
     public function getAddress()
@@ -43,9 +53,19 @@ class Contact
         return $this->address;
     }
 
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
     public function getCity()
     {
         return $this->city;
+    }
+
+    public function setCity($city)
+    {
+        $this->city = $city;
     }
 
     public function getState()
@@ -53,9 +73,19 @@ class Contact
         return $this->state;
     }
 
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
     public function getZipCode()
     {
         return $this->zipCode;
+    }
+
+    public function setZipCode($zipCode)
+    {
+        $this->zipCode = $zipCode;
     }
 
     public function getPhoneNumber()
@@ -63,9 +93,19 @@ class Contact
         return $this->phoneNumber;
     }
 
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
     public function getEmailId()
     {
         return $this->emailId;
+    }
+
+    public function setEmailId($emailId)
+    {
+        $this->emailId = $emailId;
     }
 
     public function __toString()

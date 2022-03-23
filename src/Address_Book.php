@@ -36,13 +36,51 @@ class Address_Book
     }
 
     /**
+     * Function to edit a contact by first name
+     * Non-Parameterized function
+     */
+    function editContact()
+    {
+        $editName = readline('Enter First Name of Person to Edit: ');
+        for ($i = 0; $i < count($this->contactArray); $i++) {
+            $name = $this->contactArray[$i];
+            echo "First Name: " . $name->getFirstName() . "\n";
+            if ($editName == $name->getFirstName()) {
+                $firstName = readline('Edit First Name: ');
+                $lastName = readline('Edit Last Name: ');
+                $address = readline('Edit Address: ');
+                $city = readline('Edit City: ');
+                $state = readline('Edit State: ');
+                $zipCode = readline('Edit ZipCode: ');
+                $phoneNumber = readline('Edit Mobile Number: ');
+                $emailId = readline('Edit EmailId: ');
+
+                $name->setFirstName($firstName);
+                $name->setLastName($lastName);
+                $name->setAddress($address);
+                $name->setCity($city);
+                $name->setState($state);
+                $name->setZipCode($zipCode);
+                $name->setPhoneNumber($phoneNumber);
+                $name->setEmailId($emailId);
+
+                $this->contactArray[$i] = $name;
+                $this->showContactDetails();
+                break;
+            } else {
+                echo "The name does not exist.";
+            }
+        }
+    }
+
+    /**
      * Function Print the details of the User
      * Non-Parameterized function
      */
     function showContactDetails()
     {
         for ($i = 0; $i < count($this->contactArray); $i++) {
-            echo"\nFirst Name:: " . $this->person->getFirstName()
+            echo "\nFirst Name:: " . $this->person->getFirstName()
                 . "\nLast Name:: " . $this->person->getLastName()
                 . "\nAddress:: " . $this->person->getAddress()
                 . "\nCity:: " . $this->person->getCity()
@@ -57,3 +95,4 @@ $addressBook = new Address_Book();
 $addressBook->welcomeMessage();
 $addressBook->addNewContact();
 $addressBook->showContactDetails();
+$addressBook->editContact();
