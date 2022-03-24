@@ -15,7 +15,8 @@ class Address_Book_Main
         while (true) {
             echo "\n1. Add New AddressBook \n2. Add New Contact to AddressBook"
                 . "\n3. Edit Contact in a AddressBook \n4. Delete AddressBook"
-                . "\n5. Delete Contact from AddressBook \n6. Show Contacts from AddressBook"
+                . "\n5. Delete Contact from AddressBook \n6. Search Contact by City"
+                . "\n7. Search Contact by State \n8. Show Contacts from AddressBook"
                 . "\n0. Exit\n";
             $option = readline('Enter Your Option: ');
             switch ($option) {
@@ -34,6 +35,12 @@ class Address_Book_Main
                     $multipleAddressBooks->deleteContactFromAddressBook();
                     break;
                 case 6:
+                    $multipleAddressBooks->searchPersonByCity();
+                    break;
+                case 7:
+                    $multipleAddressBooks->searchPersonByState();
+                    break;
+                case 8:
                     $multipleAddressBooks->showContactsFromAddressBook();
                     break;
                 case 0:

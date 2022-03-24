@@ -60,8 +60,7 @@ class Multiple_Address_Books
 							echo "Contact added successfully. \n";
 							break;
 						}
-						for ($j = 0; $j < $number; $j++)
-						{
+						for ($j = 0; $j < $number; $j++) {
 							if ($firstName == $values[$j]->getFirstName()) {
 								echo "The entered person is already exist.\n";
 								$i--;
@@ -158,6 +157,44 @@ class Multiple_Address_Books
 				}
 			} else {
 				echo "\nAddressBook Not Found";
+			}
+		}
+	}
+
+	/**
+	 * Function to search a person by their city
+	 * Non-Parameterized Function
+	 */
+	public function searchPersonByCity()
+	{
+		$cityName = readline('Enter the City Name: ');
+		foreach ($this->addressBookArray as $key => $values) {
+			for ($i = 0; $i < count($values); $i++) {
+				if ($cityName == $values[$i]->getCity()) {
+					echo "Address Book : " . $key . "\n";
+					echo "First Name : " . $values[$i]->getFirstName() . "\n";
+					echo "Last Name : " . $values[$i]->getLastName() . "\n";
+					echo "\n";
+				}
+			}
+		}
+	}
+
+	/**
+	 * Function to search a person by thir state
+	 * Non-Parameterized Function
+	 */
+	public function searchPersonByState()
+	{
+		$stateName = readline('Enter the State Name: ');
+		foreach ($this->addressBookarray as $key => $values) {
+			for ($i = 0; $i < count($values); $i++) {
+				if ($stateName == $values[$i]->getState()) {
+					echo "Address Book : " . $key . "\n";
+					echo "First Name : " . $values[$i]->getFirstName() . "\n";
+					echo "Last Name : " . $values[$i]->getLastName() . "\n";
+					echo "\n";
+				}
 			}
 		}
 	}
