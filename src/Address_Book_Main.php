@@ -17,7 +17,7 @@ class Address_Book_Main
                 . "\n3. Edit Contact in a AddressBook \n4. Delete AddressBook"
                 . "\n5. Delete Contact from AddressBook \n6. Search Contact by City"
                 . "\n7. Search Contact by State \n8. Show Contacts from AddressBook"
-                . "\n9. Count by City \n10. Count by State \n11. Sort AddressBook Contacts by Name"
+                . "\n9. Count by City \n10. Count by State \n11. Sort AddressBook Contacts"
                 . "\n0. Exit\n";
             $option = readline('Enter Your Option: ');
             switch ($option) {
@@ -53,7 +53,7 @@ class Address_Book_Main
                     $multipleAddressBooks->countByState($stateName);
                     break;
                 case 11:
-                    $multipleAddressBooks->sortByName();
+                    $multipleAddressBooks->sortAddressBook();
                     break;
                 case 0:
                     exit("Exit");

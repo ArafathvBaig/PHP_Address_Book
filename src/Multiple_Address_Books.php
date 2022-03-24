@@ -258,4 +258,101 @@ class Multiple_Address_Books
 			}
 		}
 	}
+	/**
+	 * Function to sort the AddressBook contacts by city
+	 * Non-Parameterized Function
+	 */
+	public function sortByCity()
+	{
+		$bookName = readline('Enter the Name of Address Book: ');
+		foreach ($this->addressBookArray as $key => $values) {
+			if ($key == $bookName) {
+				$num = count($values);
+				for ($i = 0; $i < $num - 1; $i++) {
+					for ($j = $i + 1; $j <= $num - 1; $j++) {
+						if ($values[$i]->getCity() > $values[$j]->getCity()) {
+							$temp = $values[$i];
+							$values[$i] = $values[$j];
+							$values[$j] = $temp;
+						}
+					}
+				}
+				foreach ($values as $contact) {
+					echo $contact;
+				}
+			}
+		}
+	}
+	/**
+	 * Function to sort the AddressBook contacts by state
+	 * Non-Parameterized Function
+	 */
+	public function sortByState()
+	{
+		$bookName = readline('Enter the Name of Address Book: ');
+		foreach ($this->addressBookArray as $key => $values) {
+			if ($key == $bookName) {
+				$num = count($values);
+				for ($i = 0; $i < $num - 1; $i++) {
+					for ($j = $i + 1; $j <= $num - 1; $j++) {
+						if ($values[$i]->getState() > $values[$j]->getState()) {
+							$temp = $values[$i];
+							$values[$i] = $values[$j];
+							$values[$j] = $temp;
+						}
+					}
+				}
+				foreach ($values as $contact) {
+					echo $contact;
+				}
+			}
+		}
+	}
+	/**
+	 * Function to sort the AddressBook contacts by Zip Code
+	 * Non-Parameterized Function
+	 */
+	public function sortByZipCode()
+	{
+		$bookName = readline('Enter the Name of Address Book: ');
+		foreach ($this->addressBookArray as $key => $values) {
+			if ($key == $bookName) {
+				$num = count($values);
+				for ($i = 0; $i < $num - 1; $i++) {
+					for ($j = $i + 1; $j <= $num - 1; $j++) {
+						if ($values[$i]->getZipCode() > $values[$j]->getZipCode()) {
+							$temp = $values[$i];
+							$values[$i] = $values[$j];
+							$values[$j] = $temp;
+						}
+					}
+				}
+				foreach ($values as $contact) {
+					echo $contact;
+				}
+			}
+		}
+	}
+
+	public function sortAddressBook()
+	{
+		echo "\n1. Sort By first name \n2. Sort By City \n3. Sort By State \n4. Sort by ZipCode\n";
+		$userInput = readline('Enter Your Option: ');
+		switch ($userInput) {
+			case 1:
+				$this->sortByName();
+				break;
+			case 2:
+				$this->sortByCity();
+				break;
+			case 3:
+				$this->sortByState();
+				break;
+			case 4:
+				$this->sortByZipCode();
+				break;
+			default:
+				echo "\nInvalid Option";
+		}
+	}
 }
