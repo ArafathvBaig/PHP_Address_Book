@@ -187,7 +187,7 @@ class Multiple_Address_Books
 	public function searchPersonByState()
 	{
 		$stateName = readline('Enter the State Name: ');
-		foreach ($this->addressBookarray as $key => $values) {
+		foreach ($this->addressBookArray as $key => $values) {
 			for ($i = 0; $i < count($values); $i++) {
 				if ($stateName == $values[$i]->getState()) {
 					echo "Address Book : " . $key . "\n";
@@ -197,5 +197,39 @@ class Multiple_Address_Books
 				}
 			}
 		}
+	}
+
+	/**
+	 * Function to count person by their city
+	 * Passing city name as parameter
+	 */
+	public function countByCity($cityName)
+	{
+		$count = 0;
+		foreach ($this->addressBookArray as $key => $values) {
+			for ($i = 0; $i < count($values); $i++) {
+				if ($cityName == $values[$i]->getCity()) {
+					$count++;
+				}
+			}
+		}
+		echo "Person Count by City:: " . $count;
+	}
+
+	/**
+	 * Function to count person by their state
+	 * Passing state name as parameter
+	 */
+	public function countByState($stateName)
+	{
+		$count = 0;
+		foreach ($this->addressBookArray as $key => $values) {
+			for ($i = 0; $i < count($values); $i++) {
+				if ($stateName == $values[$i]->getState()) {
+					$count++;
+				}
+			}
+		}
+		echo "Person Count by State:: " . $count;
 	}
 }
