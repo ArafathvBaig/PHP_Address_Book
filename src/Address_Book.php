@@ -74,6 +74,23 @@ class Address_Book
     }
 
     /**
+     * Function to delete contact using first name
+     * Non-Parameterized function
+     */
+    public function deleteContact()
+    {
+        echo "\n";
+        $deleteName = readline('Enter the First Name of person to delete: ');
+        for ($i = 0; $i < count($this->contactArray); $i++) {
+            $name = $this->contactArray[$i];
+            if ($deleteName == $name->getFirstName()) {
+                unset($this->contactArray[$i]);
+                $this->showContactDetails();
+            }
+        }
+    }
+
+    /**
      * Function Print the details of the User
      * Non-Parameterized function
      */
@@ -96,3 +113,5 @@ $addressBook->welcomeMessage();
 $addressBook->addNewContact();
 $addressBook->showContactDetails();
 $addressBook->editContact();
+$addressBook->deleteContact();
+
