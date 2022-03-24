@@ -232,4 +232,30 @@ class Multiple_Address_Books
 		}
 		echo "Person Count by State:: " . $count;
 	}
+
+	/**
+	 * Function to sort the AddressBook contacts by name
+	 * Non-Parameterized Function
+	 */
+	public function sortByName()
+	{
+		$bookName = readline('Enter the Name of Address Book: ');
+		foreach ($this->addressBookArray as $key => $values) {
+			if ($key == $bookName) {
+				$num = count($values);
+				for ($i = 0; $i < $num - 1; $i++) {
+					for ($j = $i + 1; $j <= $num - 1; $j++) {
+						if ($values[$i]->getFirstName() > $values[$j]->getFirstName()) {
+							$temp = $values[$i];
+							$values[$i] = $values[$j];
+							$values[$j] = $temp;
+						}
+					}
+				}
+				foreach ($values as $contact) {
+					echo $contact;
+				}
+			}
+		}
+	}
 }
