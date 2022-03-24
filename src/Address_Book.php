@@ -13,12 +13,12 @@ class Address_Book
 
     /**
      * Function to get details from User
-     * Non-Parameterized function
+     * Passing First Name as parameter
      * returns the person object
      */
-    function addNewContact()
+    function addNewContact($firstName)
     {
-        $firstName = readline('Enter Your First Name: ');
+        //$firstName = readline('Enter Your First Name: ');
         $lastName = readline('Enter Your Last Name: ');
         $address = readline('Enter Your Address: ');
         $city = readline('Enter Your City: ');
