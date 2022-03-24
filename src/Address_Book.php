@@ -65,7 +65,6 @@ class Address_Book
                 $name->setEmailId($emailId);
 
                 $this->contactArray[$i] = $name;
-                $this->showContactDetails();
                 break;
             } else {
                 echo "The name does not exist.";
@@ -85,7 +84,6 @@ class Address_Book
             $name = $this->contactArray[$i];
             if ($deleteName == $name->getFirstName()) {
                 unset($this->contactArray[$i]);
-                $this->showContactDetails();
             }
         }
     }
@@ -96,22 +94,34 @@ class Address_Book
      */
     function showContactDetails()
     {
-        for ($i = 0; $i < count($this->contactArray); $i++) {
-            echo "\nFirst Name:: " . $this->person->getFirstName()
-                . "\nLast Name:: " . $this->person->getLastName()
-                . "\nAddress:: " . $this->person->getAddress()
-                . "\nCity:: " . $this->person->getCity()
-                . "\nState:: " . $this->person->getState()
-                . "\nZipCode:: " . $this->person->getZipCode()
-                . "\nPhone Number : " . $this->person->getPhoneNumber()
-                . "\nEmail Id:: " . $this->person->getEmailId();
+        foreach ($this->contactArray as $contacts) {
+            echo $contacts . "\n";
         }
     }
 }
 $addressBook = new Address_Book();
 $addressBook->welcomeMessage();
-$addressBook->addNewContact();
-$addressBook->showContactDetails();
-$addressBook->editContact();
-$addressBook->deleteContact();
-
+while (true) {
+    echo "\n1. Add New Contact \n2. Edit Person with First Name \n3. Delete Person With First Name \n4. Show Contacts \n5. Exit\n";
+    $option = readline('Enter Your Option: ');
+    switch ($option) {
+        case 1:
+            $addressBook->addNewContact();
+            break;
+        case 2:
+            $addressBook->editContact();
+            break;
+        case 3:
+            $addressBook->deleteContact();
+            break;
+        case 4:
+            $addressBook->showContactDetails();
+            break;
+        case 5:
+            exit("Exit");
+            break;
+        default:
+            echo "\nNo such Option.";
+            break;
+    }
+}
